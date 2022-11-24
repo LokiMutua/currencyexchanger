@@ -1,0 +1,31 @@
+<header class="header-content">
+  <nav class="nav">
+      <div class="nav__logo">
+        <a class="">
+          <img src="assets/logo.png" alt="Logo Image" class="logo">
+        </a>
+      </div>
+      <ul class="nav__list">
+        <li class="nav__item" routerLinkActive="active">
+          <a
+            class="nav__link cursor__pointer"
+            routerLinkActive="EUR-USD"
+            [routerLink]="['/details']"
+            [queryParams]="{ from: 'EUR', to: 'USD'}"
+            aria-label="EUR-USD DETAILS"
+          >EUR-USD Details
+          </a>
+        </li>
+        <li class="nav__item">
+          <a
+            class="nav__link cursor__pointer"
+            routerLinkActive="EUR-GBP"
+            [routerLink]="['/details']"
+            [queryParams]="{ from: 'EUR', to: 'GBP'}"
+            aria-label="EUR-USD DETAILS"
+          >EUR-GBP Details
+          </a>
+        </li>
+      </ul>
+  </nav>
+</header>

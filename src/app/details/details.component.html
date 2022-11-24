@@ -1,0 +1,98 @@
+<section class="dashboard">
+    <div class="top-section">
+      <h2 class="d-inline float-left">{{ fromCurrency }} - European Union Euro</h2>
+      <button class="d-inline btn btn-primary float-right" (click)="onRedirect()">
+        Back to Home
+      </button>
+    </div>
+    <br />
+  <div class="">
+    <form
+      class="validate-from"
+      [formGroup]="convertForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="row">
+        <div class="col-lg-4">
+          <label class="form-label" for="amount">Amount</label>
+          <input
+            type="number"
+            class="form-input"
+            formControlName="amount"
+            placeholder="Amount"
+          />
+        </div>
+        <div class="col col-lg-3">
+          <label class="form-label" for="amount">From</label>
+          <select
+            class="form-input"
+            formControlName="from"
+            (change)="onChangeFromCurrency($event)"
+            [attr.disabled]="true"
+          >
+            <option *ngFor="let currency of currencies" [ngValue]="currency">
+              {{ currency }}
+            </option>
+          </select>
+        </div>
+        <div class="col col-lg-2 mt-5 text-center">
+          <span class="conversion-direction" (click)="onSwapCurrencies()"
+            ><i class="bi bi-arrow-left-right"></i
+          ></span>
+        </div>
+        <div class="col col-lg-3">
+          <label class="form-label" for="amount">To</label>
+          <select
+            class="form-input"
+            formControlName="to"
+            (change)="onChangeToCurrency($event)"
+          >
+            <option *ngFor="let currency of currencies" [ngValue]="currency">
+              {{ currency }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-4-lg"></div>
+        <div class="col col-lg-8">
+          <button
+            class="btn btn-primary mb-3 mt-3 w-100"
+            [disabled]="!convertForm.valid"
+          >
+            Convert
+          </button>
+        </div>
+      </div>
+    </form>
+    <div class="row">
+      <div class="col col-lg-4">
+        <textarea class="form-control text-center">{{ exchangeRate }}</textarea>
+      </div>
+      <div class="col col-lg-4">
+        <textarea class="form-control text-center"> {{ exchangeValue }}</textarea>
+      </div>
+      <div class="col col-lg-4">
+        <button
+          type="submit"
+          class="btn btn-primary btn-lg w-100 mt-2"
+          onclick="redirectToPage()"
+          [disabled]="true"
+          hidden="true"
+        >
+          More Details
+        </button>
+      </div>
+    </div>
+    <br />
+  </div>
+  <div class="display_cards">
+    <div class="card text-center">
+      <h4 class="text-center mt-2">Historical Rates Chart</h4>
+      <h6>{{ chartTitle }}</h6>
+      <div class="card-body">
+        <app-historical-data-chart [chartData]="chartData" [chartTitle]="chartTitle.toString()"></app-historical-data-chart>
+      </div>
+    </div>
+  </div>
+</section>
