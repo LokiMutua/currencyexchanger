@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_KEY: "csXj2DfPlQYENqcvDSbCwnj7QV8CBdeY",
+  API_KEY: "",
   API_URL: "https://api.apilayer.com/fixer"
 };
 
