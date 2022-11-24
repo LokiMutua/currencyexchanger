@@ -11,20 +11,26 @@ import { default as Annotation } from 'chartjs-plugin-annotation';
 })
 export class HistoricalDataChartComponent implements OnInit {
   public lineChartType: ChartType = 'line';
+  dataSetData!: any[];
 
-  @Input() chartData: number[] = [65, 59, 80, 81, 56, 55, 40, 20, 30, 20, 50, 60];
+
+  @Input() chartData!: any[];
   @Input() chartTitle!: string;
+  @Input() toCurrency!: string;
   constructor() {
-    Chart.register(Annotation);
   }
 
   ngOnInit(): void {
+    this.chartData.map(monthRate => {
+      this.dataSetData.push(monthRate.rates[this.toCurrency])
+    });
   }
+
 
   public lineChartData: ChartConfiguration['data'] = {
     datasets: [
       {
-        data: this.chartData,
+        data: this.dataSetData,
         label: this.chartTitle,
         backgroundColor: 'rgba(148,159,177,0.2)',
         borderColor: 'rgba(148,159,177,1)',
@@ -77,14 +83,5 @@ export class HistoricalDataChartComponent implements OnInit {
       }
     }
     this.chart?.update();
-  }
-
-  // events
-  public chartClicked({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
-    console.log(event, active);
-  }
-
-  public chartHovered({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
-    console.log(event, active);
   }
 }

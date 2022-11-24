@@ -9,7 +9,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Currency Exchanger';
+  title = 'currencyexchanger';
   currentUrl: string = '';
 
   constructor(

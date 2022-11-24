@@ -91,7 +91,7 @@
       <h4 class="text-center mt-2">Historical Rates Chart</h4>
       <h6>{{ chartTitle }}</h6>
       <div class="card-body">
-        <app-historical-data-chart [chartData]="chartData" [chartTitle]="chartTitle.toString()"></app-historical-data-chart>
+        <app-historical-data-chart [chartData]="chartData" [chartTitle]="chartTitle.toString()" [toCurrency]="toCurrency!"></app-historical-data-chart>
       </div>
     </div>
   </div>
